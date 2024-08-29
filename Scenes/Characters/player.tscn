@@ -13,7 +13,6 @@ script = ExtResource("1_fd0ai")
 shape = SubResource("CircleShape2D_cdlyt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
