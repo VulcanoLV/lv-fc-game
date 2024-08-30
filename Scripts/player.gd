@@ -1,28 +1,23 @@
 extends CharacterBody2D
 
-@onready var sprite = $Sprite2D
-const SPEED = 300
-var player_rot :Vector2
 
-func get_mouse_rotation():
-	player_rot = get_global_mouse_position()
-	return player_rot
+const SPEED = 300.0
+var dir :Vector2
 
-func get_input():
-	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if Input.is_action_just_pressed("move_dodge"):
-		var opposite_direction = (global_position - get_mouse_rotation()).normalized()
-		opposite_direction = opposite_direction * 2.5
-		velocity = opposite_direction * SPEED
-		
-	elif direction:
-
-		velocity = direction * SPEED
-
-	else:
-		velocity = lerp(velocity, Vector2.ZERO, 0.3)
+func _process(delta: float) -> void:
+	pass
 
 func _physics_process(delta: float) -> void:
-	look_at(get_mouse_rotation())
-	get_input()
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var dir_x := Input.get_axis("ui_left", "ui_right")
+	var dir_y := Input.get_axis("ui_up", "ui_down")
+	
+	dir = Vector2(dir_x, dir_y).normalized()
+	if dir:
+		velocity = dir * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+
 	move_and_slide()
