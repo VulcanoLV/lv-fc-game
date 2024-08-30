@@ -3,12 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fd0ai"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="2_jj0dv"]
 [ext_resource type="Texture2D" uid="uid://bs8i6sojrkrkq" path="res://Sprites/testplayer.png" id="2_ux4yw"]
-[gd_scene load_steps=6 format=3 uid="uid://cxuspwcvwnsyl"]
-
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_fd0ai"]
-[ext_resource type="Script" path="res://Scripts/ui.gd" id="2_jj0dv"]
-[ext_resource type="Texture2D" uid="uid://b2jmueov0n5yf" path="res://Sprites/UI/9patch.png" id="3_hiq6e"]
-[ext_resource type="PackedScene" uid="uid://u33nxrteunyj" path="res://Scenes/UI/slot.tscn" id="4_xom81"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cdlyt"]
 radius = 32.0
@@ -31,46 +25,50 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("2_jj0dv")
 
-[node name="Inventory" type="NinePatchRect" parent="UI"]
-custom_minimum_size = Vector2(20, 20)
+[node name="ColorRect" type="ColorRect" parent="UI"]
+visible = false
 layout_mode = 0
-offset_right = 76.0
-offset_bottom = 52.0
-texture = ExtResource("3_hiq6e")
-region_rect = Rect2(0, 0, 20, 20)
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
+offset_left = -269.0
+offset_top = -191.0
+offset_right = 269.0
+offset_bottom = 194.0
 
-[node name="GridContainer" type="GridContainer" parent="UI/Inventory"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GridContainer" type="GridContainer" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 60.0
+offset_right = 467.0
+offset_bottom = 322.0
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
 columns = 3
 
-[node name="Slot" parent="UI/Inventory/GridContainer" instance=ExtResource("4_xom81")]
+[node name="ColorRect" type="ColorRect" parent="UI/ColorRect/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-mouse_filter = 1
+color = Color(0, 0, 0, 1)
 
-[node name="Slot2" parent="UI/Inventory/GridContainer" instance=ExtResource("4_xom81")]
+[node name="ColorRect2" type="ColorRect" parent="UI/ColorRect/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Slot3" parent="UI/Inventory/GridContainer" instance=ExtResource("4_xom81")]
+[node name="ColorRect3" type="ColorRect" parent="UI/ColorRect/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Slot4" parent="UI/Inventory/GridContainer" instance=ExtResource("4_xom81")]
+[node name="ColorRect4" type="ColorRect" parent="UI/ColorRect/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Slot5" parent="UI/Inventory/GridContainer" instance=ExtResource("4_xom81")]
+[node name="ColorRect5" type="ColorRect" parent="UI/ColorRect/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Slot6" parent="UI/Inventory/GridContainer" instance=ExtResource("4_xom81")]
+[node name="ColorRect6" type="ColorRect" parent="UI/ColorRect/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+color = Color(0, 0, 0, 1)
