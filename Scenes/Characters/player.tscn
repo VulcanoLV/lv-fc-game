@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxuspwcvwnsyl"]
+[gd_scene load_steps=5 format=3 uid="uid://cxuspwcvwnsyl"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fd0ai"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="2_jj0dv"]
+[ext_resource type="Texture2D" uid="uid://bs8i6sojrkrkq" path="res://Sprites/testplayer.png" id="2_ux4yw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cdlyt"]
-radius = 16.0
+radius = 32.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fd0ai")
@@ -12,7 +13,12 @@ script = ExtResource("1_fd0ai")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cdlyt")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_ux4yw")
+
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -20,48 +26,49 @@ anchors_preset = 0
 script = ExtResource("2_jj0dv")
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
+visible = false
 layout_mode = 0
-offset_left = 456.0
-offset_top = 242.0
-offset_right = 563.0
-offset_bottom = 322.0
+offset_left = -269.0
+offset_top = -191.0
+offset_right = 269.0
+offset_bottom = 194.0
 
 [node name="GridContainer" type="GridContainer" parent="UI/ColorRect"]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 20.0
-offset_right = 91.0
-offset_bottom = 68.0
+offset_left = 71.0
+offset_top = 60.0
+offset_right = 467.0
+offset_bottom = 322.0
 theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 6
 columns = 3
 
 [node name="ColorRect" type="ColorRect" parent="UI/ColorRect/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="UI/ColorRect/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="UI/ColorRect/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="UI/ColorRect/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect5" type="ColorRect" parent="UI/ColorRect/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect6" type="ColorRect" parent="UI/ColorRect/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
