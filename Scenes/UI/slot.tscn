@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://u33nxrteunyj"]
+
+[ext_resource type="Texture2D" uid="uid://b2jmueov0n5yf" path="res://Sprites/UI/9patch.png" id="1_jmasd"]
+[ext_resource type="Script" path="res://Scripts/slot.gd" id="2_5tr4g"]
+
+[node name="Slot" type="NinePatchRect"]
+custom_minimum_size = Vector2(20, 20)
+mouse_filter = 0
+texture = ExtResource("1_jmasd")
+script = ExtResource("2_5tr4g")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
