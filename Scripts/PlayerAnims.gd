@@ -9,11 +9,11 @@ func _process(delta: float) -> void:
 		legs.play("Walk")
 	else: legs.stop()
 
-func punch():
+func attack(anim):
 	randomize()
 	var odds = (randi() & 2) - 1
 	print(odds)
 	if odds < 0:
 		get_parent().body.flip_v = true 
 	else: get_parent().body.flip_v = false
-	body.play("Punch")
+	body.play(anim)

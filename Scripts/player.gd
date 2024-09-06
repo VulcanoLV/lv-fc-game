@@ -10,6 +10,8 @@ const SPEED = 300
 var player_rot :Vector2
 var direction :Vector2
 
+var cur_weapon = "Punch"
+
 func get_mouse_rotation():
 	player_rot = get_global_mouse_position()
 	return player_rot
@@ -33,8 +35,7 @@ func get_input():
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, 0.3)
 	
-	if Input.is_action_just_pressed("ui_click"):
-		anim.punch()
+	attack()
 		
 
 func _physics_process(delta: float) -> void:
@@ -43,3 +44,7 @@ func _physics_process(delta: float) -> void:
 	col.look_at(get_mouse_rotation())
 	get_input()
 	move_and_slide()
+	
+func attack():
+	if Input.is_action_just_pressed("ui_click"):
+		anim.attack(cur_weapon)
