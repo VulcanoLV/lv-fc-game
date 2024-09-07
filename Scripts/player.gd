@@ -6,6 +6,9 @@ extends CharacterBody2D
 
 @onready var col = $CollisionShape2D
 
+@export var punch_audio: AudioStream
+@export var footsteps: AudioStream
+
 const SPEED = 300
 var player_rot :Vector2
 var direction :Vector2
@@ -30,9 +33,11 @@ func get_input():
 		print(degrees)
 	
 		legs.rotation_degrees = degrees
-		
+		if $Footsteps.playing != true:
+			$Footsteps.playing = true
 
 	else:
+		$Footsteps.playing = false
 		velocity = lerp(velocity, Vector2.ZERO, 0.3)
 	
 	attack()

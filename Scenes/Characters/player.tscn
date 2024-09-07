@@ -1,12 +1,26 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxuspwcvwnsyl"]
+[gd_scene load_steps=25 format=3 uid="uid://cxuspwcvwnsyl"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fd0ai"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="2_jj0dv"]
+[ext_resource type="AudioStream" uid="uid://br76bbsm7xum3" path="res://Audio/PlayerSounds/Punch/Punch0.wav" id="2_spewv"]
+[ext_resource type="AudioStream" uid="uid://bvopxie3te574" path="res://Audio/PlayerSounds/Punch/Punch1.wav" id="3_iqfnn"]
 [ext_resource type="Texture2D" uid="uid://dnnh6xq0mb2m1" path="res://Sprites/Characters/Player/LegsSpriteSheet.png" id="3_mg58s"]
 [ext_resource type="Texture2D" uid="uid://ct0rscm83uyfa" path="res://Sprites/Characters/Player/BodySpriteSheet.png" id="3_qnq4b"]
+[ext_resource type="AudioStream" uid="uid://eqlh8pymllmj" path="res://Audio/PlayerSounds/Punch/Punch2.wav" id="4_je6p5"]
 [ext_resource type="Texture2D" uid="uid://bcjnp7r3tud5e" path="res://Sprites/UI/9patch.png" id="4_ro7p8"]
+[ext_resource type="AudioStream" uid="uid://civeym272bgoh" path="res://Audio/PlayerSounds/Punch/Punch3.wav" id="5_g83k2"]
 [ext_resource type="Script" path="res://Scripts/slot.gd" id="5_it0id"]
+[ext_resource type="AudioStream" uid="uid://c04rha2i866u6" path="res://Audio/PlayerSounds/Punch/Punch4.wav" id="6_uypkh"]
+[ext_resource type="AudioStream" uid="uid://0u0qr76r1dih" path="res://Audio/PlayerSounds/FootstepsHard.wav" id="7_8wxqo"]
 [ext_resource type="Script" path="res://Scripts/PlayerAnims.gd" id="7_r7j6d"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_viy1w"]
+streams_count = 5
+stream_0/stream = ExtResource("2_spewv")
+stream_1/stream = ExtResource("3_iqfnn")
+stream_2/stream = ExtResource("4_je6p5")
+stream_3/stream = ExtResource("5_g83k2")
+stream_4/stream = ExtResource("6_uypkh")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phype"]
 radius = 6.0
@@ -47,8 +61,26 @@ tracks/0/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_wyfv0"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xy6lf"]
 _data = {
+"Idle": SubResource("Animation_wyfv0"),
 "Punch": SubResource("Animation_765y8"),
 "RESET": SubResource("Animation_lrn3g")
 }
@@ -109,6 +141,8 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fd0ai")
+punch_audio = SubResource("AudioStreamRandomizer_viy1w")
+footsteps = ExtResource("7_8wxqo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_phype")
@@ -170,6 +204,7 @@ root_node = NodePath("../LegAnim")
 libraries = {
 "": SubResource("AnimationLibrary_xy6lf")
 }
+speed_scale = 1.5
 movie_quit_on_finish = true
 
 [node name="LegAnim" type="AnimationPlayer" parent="AnimationManager"]
@@ -178,6 +213,9 @@ libraries = {
 "": SubResource("AnimationLibrary_xnl7d")
 }
 speed_scale = 2.0
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8wxqo")
 
 [connection signal="mouse_entered" from="UI/Inventory/GridContainer/Slot" to="UI/Inventory/GridContainer/Slot" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Inventory/GridContainer/Slot" to="UI/Inventory/GridContainer/Slot" method="_on_mouse_exited"]

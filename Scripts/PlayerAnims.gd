@@ -10,10 +10,14 @@ func _process(delta: float) -> void:
 	else: legs.stop()
 
 func attack(anim):
-	randomize()
-	var odds = (randi() & 2) - 1
-	print(odds)
-	if odds < 0:
-		get_parent().body.flip_v = true 
-	else: get_parent().body.flip_v = false
-	body.play(anim)
+	if body.is_playing():
+		pass
+	else:
+		randomize()
+		var odds = (randi() & 2) - 1
+		if odds < 0:
+			get_parent().body.flip_v = true 
+		else: get_parent().body.flip_v = false
+		
+		AudioManager.play_sound(get_parent().punch_audio)
+		body.play(anim)
